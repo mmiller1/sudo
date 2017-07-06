@@ -51,6 +51,8 @@ template "#{prefix}/sudoers" do
     agent_forwarding: node['authorization']['sudo']['agent_forwarding'],
     sudoers_defaults: node['authorization']['sudo']['sudoers_defaults'],
     command_aliases: node['authorization']['sudo']['command_aliases'],
+    user_aliases: node['authorization']['sudo']['user_aliases'],
+    host_aliases: node['authorization']['sudo']['host_aliases'],
     env_keep_add: node['authorization']['sudo']['env_keep_add'],
     env_keep_subtract: node['authorization']['sudo']['env_keep_subtract'],
     custom_commands_users: node['authorization']['sudo']['custom_commands']['users'],

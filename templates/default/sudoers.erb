@@ -27,6 +27,14 @@ root          ALL=(ALL) ALL
 %<%= commands[:group] %> ALL = <%= "NOPASSWD:" if commands[:passwordless] %> <%= commands[:command_list].join(', ') %>
 <% end -%>
 
+<% @host_aliases.each do |a| -%>
+Host_Alias <%= a[:name].upcase %> = <%= a[:host_list].join(', ') %>
+<% end -%>
+
+<% @user_aliases.each do |a| -%>
+User_Alias <%= a[:name].upcase %> = <%= a[:user_list].join(', ') %>
+<% end -%>
+
 <% @command_aliases.each do |a| -%>
 Cmnd_Alias <%= a[:name].upcase %> = <%= a[:command_list].join(', ') %>
 <% end -%>
