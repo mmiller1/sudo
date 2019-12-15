@@ -1,0 +1,46 @@
+driver:
+  name: vagrant
+
+provisioner:
+  name: chef_zero
+  deprecations_as_errors: true
+
+verifier:
+  name: inspec
+
+platforms:
+  - name: amazonlinux
+    driver_config:
+      box: mvbcoding/awslinux
+  - name: centos-6
+  - name: centos-7
+  - name: centos-8
+  - name: debian-9
+  - name: debian-10
+  - name: fedora-31
+  - name: freebsd-11
+  - name: freebsd-12
+  - name: opensuse-leap-15
+  - name: ubuntu-16.04
+  - name: ubuntu-18.04
+  - name: sles-12-sp1
+    driver:
+      box: chef/sles-12-sp1-x86_64 # private box
+  - name: solaris-11.3
+    driver:
+      box: chef/solaris-11.3 # private box
+  - name: macos-10.12
+    driver:
+      box: chef/macos-10.12 # private box in Chef's Atlas account
+      provider: vmware_fusion
+
+
+suites:
+  - name: default
+    run_list: test::default
+  - name: create
+    run_list: test::create
+    excludes: ["freebsd-10", "freebsd-11"]
+  - name: delete
+    run_list: test::delete
+    excludes: ["freebsd-10", "freebsd-11"]
